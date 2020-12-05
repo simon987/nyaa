@@ -28,9 +28,9 @@
   {# prev and next are only show if a symbol has been passed. #}
   {% if prev != None -%}
     {% if pagination.has_prev %}
-    <li><a rel="prev" href="{{_arg_url_for(endpoint, url_args, p=pagination.prev_num)}}">{{prev}}</a></li>
+    <li><a rel="prev" href="{{_arg_url_for(endpoint, url_args, p=pagination.prev_num)}}"><i class="fa fa-chevron-left"></i></a></li>
     {% else %}
-    <li class="disabled"><a href="#">{{prev}}</a></li>
+    <li class="disabled"><a href="#"><i class="fa fa-chevron-left"></i></a></li>
     {% endif %}
   {%- endif -%}
 
@@ -48,9 +48,9 @@
 
   {% if next != None -%}
     {% if pagination.has_next %}
-    <li><a rel="next" href="{{_arg_url_for(endpoint, url_args, p=pagination.next_num)}}">{{next}}</a></li>
+    <li><a rel="next" href="{{_arg_url_for(endpoint, url_args, p=pagination.next_num)}}"><i class="fa fa-chevron-right"></i></a></li>
     {% else %}
-    <li class="disabled"><a href="#">{{next}}</a></li>
+    <li class="disabled"><a href="#"><i class="fa fa-chevron-right"></i></a></li>
     {% endif %}
   {%- endif -%}
   </ul>

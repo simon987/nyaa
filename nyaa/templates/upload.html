@@ -18,7 +18,7 @@
 	{{ upload_form.csrf_token }}
 
 	{% if config.ENFORCE_MAIN_ANNOUNCE_URL %}<p><strong>Important:</strong> Please include <kbd>{{ config.MAIN_ANNOUNCE_URL }}</kbd> in your trackers.</p>{% endif %}
-	<p><strong>Important:</strong> Make sure you have read <strong><a href="{{ url_for('site.rules') }}">the rules</a></strong> before uploading!</p>
+{#	<p><strong>Important:</strong> Make sure you have read <strong><a href="{{ url_for('site.rules') }}">the rules</a></strong> before uploading!</p>#}
 	<br>
 
 	{% if show_ratelimit %}

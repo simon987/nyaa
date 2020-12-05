@@ -19,7 +19,7 @@
 
 {% if (use_elastic and torrent_query.hits.total.value > 0) or (torrent_query.items) %}
 <div class="table-responsive">
-	<table class="table table-bordered table-hover table-striped torrent-list">
+	<table class="table torrent-list">
 		<thead>
 			<tr>
 				{%+ call render_column_header("hdr-category", "width:80px;", center_text=True) -%}
@@ -58,7 +58,7 @@
 			{% set icon_dir = config.SITE_FLAVOR %}
 			{% set torrents = torrent_query if use_elastic else torrent_query.items %}
 			{% for torrent in torrents %}
-			<tr class="{% if torrent.deleted %}deleted{% elif torrent.hidden %}warning{% elif torrent.remake %}danger{% elif torrent.trusted %}success{% else %}default{% endif %}">
+			<tr class="{% if torrent.deleted %}deleted{% elif torrent.hidden %}warning{% elif torrent.remake %}danger{% elif torrent.trusted %}default{% else %}default{% endif %}">
 				{% set cat_id = use_elastic and ((torrent.main_category_id|string) + '_' + (torrent.sub_category_id|string)) or torrent.sub_category.id_as_string %}
 				<td>
 					{% if use_elastic %}

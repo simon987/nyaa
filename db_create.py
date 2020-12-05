@@ -7,18 +7,14 @@ from nyaa.extensions import db
 app = create_app('config')
 
 NYAA_CATEGORIES = [
-    ('Anime', ['Anime Music Video', 'English-translated', 'Non-English-translated', 'Raw']),
-    ('Audio', ['Lossless', 'Lossy']),
-    ('Literature', ['English-translated', 'Non-English-translated', 'Raw']),
-    ('Live Action', ['English-translated', 'Idol/Promotional Video', 'Non-English-translated', 'Raw']),
-    ('Pictures', ['Graphics', 'Photos']),
-    ('Software', ['Applications', 'Games']),
+    ('Books', ['Fiction', 'Non-Fiction']),
+    ('Media', ['Audio', 'Video', 'Images']),
+    ('Software', ['Misc', 'Games']),
+    ('NSFW', ['Pictures', 'Videos', 'Audio']),
+    ('Misc', ['Other']),
 ]
 
-
 SUKEBEI_CATEGORIES = [
-    ('Art', ['Anime', 'Doujinshi', 'Games', 'Manga', 'Pictures']),
-    ('Real Life', ['Photobooks / Pictures', 'Videos']),
 ]
 
 
@@ -27,7 +23,7 @@ def add_categories(categories, main_class, sub_class):
         main_cat = main_class(name=main_cat_name)
         for i, sub_cat_name in enumerate(sub_cat_names):
             # Composite keys can't autoincrement, set sub_cat id manually (1-index)
-            sub_cat = sub_class(id=i+1, name=sub_cat_name, main_category=main_cat)
+            sub_cat = sub_class(id=i + 1, name=sub_cat_name, main_category=main_cat)
         db.session.add(main_cat)
 
 
